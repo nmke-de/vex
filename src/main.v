@@ -2,13 +2,14 @@ module main
 
 import net
 import os
+import io
 
 fn main() {
-	mut connection := net.dial_tcp('${os.args[1]}:1900')!
-	path := os.args[2]
-	connection.write_string('/${path}\r\n')!
-	for line := connection.read_line(); line != ''; line = connection.read_line() {
-		println(line)
-	}
+	targethost := os.args[1] or {'localhost'}
+	mut connection := net.dial_tcp('${targethost}:1900')!
+	path := os.args[2] or {'/'}
+	connection.write_string('${path}\r\n')!
+	result := io.read_all(reader: connection)!
+	println(result.bytestr())
 	connection.close()!
 }
