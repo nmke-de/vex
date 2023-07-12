@@ -7,9 +7,10 @@ fn main() {
 	url := os.args[1] or { 'localhost/' }
 	noscheme := url.after('nex://')
 	targethost := noscheme.before('/')
-	mut path := '/'
-	if noscheme.contains('/') {
-		path = noscheme.after_char(`/`)
+	path := if noscheme.contains('/') {
+		noscheme.after_char(`/`)
+	} else {
+		'/'
 	}
 	println(nex.dial(targethost, path) or { 'Vex failed to dial ${url}.' })
 }
