@@ -4,7 +4,12 @@ import os
 import nex
 
 fn main() {
-	targethost := os.args[1] or { 'localhost' }
-	path := os.args[2] or { '/' }
-	println(nex.dial(targethost, path) or { 'Vex failed to dial ${targethost}${path}.' })
+	url := os.args[1] or {'localhost/'}
+	noscheme := url.after('nex://')
+	targethost := noscheme.before('/')
+	mut path := '/'
+	if noscheme.contains('/') {
+		path = noscheme.after_char(`/`)
+	}
+	println(nex.dial(targethost, path) or { 'Vex failed to dial ${url}.' })
 }
