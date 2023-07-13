@@ -1,6 +1,6 @@
 # vex
 
-**vex** is a client for the `[nex:// protocol](https://nex.nightfall.city/warp.php)`.
+**vex** is a client for the `[nex:// protocol](https://nex.nightfall.city)`.
 
 ## But why?
 
