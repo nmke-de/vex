@@ -8,7 +8,7 @@ fn main() {
 	noscheme := url.after('nex://')
 	targethost := noscheme.before('/')
 	path := if noscheme.contains('/') {
-		noscheme.after_char(`/`)
+		'/' + noscheme.after_char(`/`)
 	} else {
 		'/'
 	}
