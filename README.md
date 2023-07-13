@@ -1,6 +1,6 @@
 # vex
 
-**vex** is a client for the `[nex:// protocol](https://nex.nightfall.city)`.
+**vex** is a client for the [`nex:// protocol`](https://nex.nightfall.city).
 
 ## But why?
 
